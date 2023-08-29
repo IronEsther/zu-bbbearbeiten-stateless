@@ -18,6 +18,7 @@
             <div class="field" style="margin-top: 10px;">
                 <div for="text" class="ui pointing below label">Was gibbbt es zu tun?</div>
                 <div class="ui action input">
+                <input name="date" type="date" placeholder="Datum wählen">
                     <input autofocus name="text" type="text" name="text" placeholder="Fürs Modul lernen...">
                     <button class="ui blue button" type="submit">Hinzufügen</button>
                 </div>
@@ -27,6 +28,8 @@
 
         {% for item in items %}
         <div class="ui segment" style="overflow:hidden; position: relative">
+            <span class="ui header" style="margin-left: 0.5em;">{{item.text}}</span>
+            <p style="margin-left: 0.5em;">{{ item.date.strftime('%d.%m.%Y') }}</p>
             <span class="ui header" style="margin-left: 0.5em;">{{item.text}}</span>
             {% if item.isCompleted %}
             <a class="ui green left corner label" href="/update/{{loop.index0}}"><i
