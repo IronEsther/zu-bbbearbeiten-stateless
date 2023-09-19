@@ -1,3 +1,0 @@
-git add test_helper.py helper.py templates/index.html
-git commit -m "Asks the user for date, closes #1"
-git push

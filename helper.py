@@ -1,28 +1,37 @@
 from dataclasses import dataclass
 import datetime
+from operator import attrgetter
 
-items = []
+# speicher
+todos = []
 
 
 @dataclass
-class Item:
-    text: str
-    date: datetime.date
+class todo:
+    title: str
+    date: datetime.date = None
     isCompleted: bool = False
 
 
-def add(text, date):
-    text = text.replace('b', 'bbb').replace('B', 'Bbb')
-    items.append(Item(text, date))
+# BBB-sierung
+def add(title, date):
+    title = title.replace("b", "bbb").replace("B", "Bbb")
+    date = datetime.datetime.strptime(date, "%Y-%m-%d")
+    todos.sort(key=attrgetter("date"))
+    todos.append(todo(title, date))
 
 
 def get_all():
-    return items
+    return todos
 
 
 def get(index):
-    return items[index]
+    return todos[index]
 
 
 def update(index):
-    items[index].isCompleted = not items[index].isCompleted
+    todos[index].isCompleted = not todos[index].isCompleted
+
+
+def delete():
+    todos.remove = todos

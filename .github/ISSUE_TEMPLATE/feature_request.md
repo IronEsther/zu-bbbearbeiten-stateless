@@ -1,5 +1,5 @@
 ---
-name: User Story
+name: Feature request
 about: Submit a new requirement for this project
 title: As <role>, I want <something> so that <something>
 labels: new issue, user story
