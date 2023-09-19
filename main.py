@@ -1,25 +1,25 @@
 import helper
+import datetime
 from flask import Flask, request, Response, render_template, redirect, url_for
-
 app = Flask(__name__)
 
-
-# urls regieren
 @app.route("/")
 def index():
-    todos = helper.get_all()
-    return render_template("index.html", todos=todos)
+    items = helper.get_all()
+    return render_template('index.html', items=items)
 
 
-@app.route("/add", methods=["POST"])
+@app.route('/add', methods=["POST"])
 def add():
-    title = request.form.get("title")
-    date = request.form.get("date")
-    helper.add(title, date)
+    text = request.form.get("text")
+    date_str = request.form.get("date")
+    date = datetime.datetime.strptime(date_str, '%Y-%m-%d').date()  
+    helper.add(text, date)
     return redirect(url_for("index"))
 
 
-@app.route("/update/<int:index>")
+
+@app.route('/update/<int:index>')
 def update(index):
     helper.update(index)
     return redirect(url_for("index"))
