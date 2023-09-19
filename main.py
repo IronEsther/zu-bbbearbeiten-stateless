@@ -1,11 +1,11 @@
 from flask import Flask, Response, redirect, render_template, request, url_for
 from database import db
-import os
 
 import helper
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///todo.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql+psycopg2://postgres:hallo@localhost:5432/todo"
+
 db.init_app(app)
 app.app_context().push()
 db.create_all()

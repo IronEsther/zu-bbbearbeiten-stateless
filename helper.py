@@ -1,7 +1,6 @@
 import datetime
 import io
 import csv
-from flask_sqlalchemy import SQLAlchemy
 from database import db
 
 
